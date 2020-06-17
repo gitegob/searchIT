@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SrchItLabel extends Component {
+class CityCard extends Component {
   render() {
     const { city, state, population, growth } = this.props;
     return (
@@ -42,4 +42,4 @@ class SrchItLabel extends Component {
   }
 }
 
-export default SrchItLabel;
+export default CityCard;

@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
 import logo from '../../src/favicon.ico';
+import SearchBox from './searchBox';
 
 class NavBar extends Component {
-  state = {
-    query: '',
-  };
-
   render() {
     return (
       <nav className="header">
-        <img className="logo" src={logo} alt="logo" srcset="" />
+        <img className="logo" src={logo} alt="logo" />
         <div className="searchit-label">searchIT</div>
-        <input
-          className="search-query"
-          type="text"
-          placeholder="City or State"
-          size="100"
-          onChange={(e) => {
-            this.setState({ query: e.target.value });
-          }}
+        <SearchBox
+          onType={this.props.onType}
+          searchWord={this.props.searchWord}
         />
         <button
-          onClick={() => this.props.onSearch(this.state.query)}
+          onClick={() => this.props.onSearch(this.props.query)}
           type="button"
           className="search-button"
         >

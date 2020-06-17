@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StateCard from './cityCard';
+import CityCard from './cityCard';
 
 class Container extends Component {
   render() {
@@ -7,7 +7,7 @@ class Container extends Component {
     return (
       <div className="container" id="container">
         {cities.map((city) => (
-          <StateCard
+          <CityCard
             city={city.city}
             state={city.state}
             population={city.population}
