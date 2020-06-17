@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  background-color: #2c2537;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.header {
+  background-color: #2c2537;
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.logo {
+  height: 4rem;
+  width: 4rem;
+}
+
+.searchit-label {
+  font-size: 3em;
+  margin: 15px;
+  width: 15%;
+  font-family: 'Raleway', sans-serif;
+  display: inline-block;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.suggestion-box,
+input {
+  height: 50px;
+  margin-left: 5px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bolder;
+  width: 40%;
+  border: none;
+}
+
+.suggestion {
+  background: inherit;
+  position: relative;
+  width: 100%;
+  cursor: default;
+  padding: 10px;
+  height: 40px;
+  z-index: 1;
+}
+
+.suggestion-box {
+  background-color: white;
+  position: relative;
+  left: 17.5%;
+  height: fit-content;
+  margin-top: -1.5%;
+  cursor: default;
+}
+input:focus {
+  outline: none;
+}
+.suggestion:hover {
+  /*     background-color: rgb(201, 186, 229); */
+  background-image: linear-gradient(to right, white, rgb(201, 186, 229), white);
+}
+input::placeholder {
+  color: grey;
+  font-size: 1em;
+}
+
+.search-button {
+  color: white;
+  margin-left: 10px;
+  padding: 5px;
+  display: inline-block;
+  height: 60px;
+  width: 15%;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 0 2px;
+  background-color: #2c2537;
+  border: none;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.search-button:hover {
+  background-color: rgb(147, 181, 224);
+  color: rgb(40, 58, 82);
+  transition: all 0.4s ease;
+}
+
+.search-button:focus {
+  outline: none;
+}
+
+.container {
+  height: auto;
+  padding: 15px;
+}
+
+.search-results {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8);
+  height: fit-content;
+  padding: 15px 15px 35px 15px;
+  margin: 15px;
+  width: 30vw;
+  left: 20%;
+  box-shadow: 0 0 10px;
+}
+
+.search-results span {
+  font-family: 'Montserrat', sans-serif;
+  margin-right: 0.3rem;
+}
+
+.search-results .row {
+  margin-top: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+.data {
+  display: inline-block;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: bold;
+}
+
+#state {
+  text-transform: uppercase;
+}
+
+.remark {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8);
+  height: fit-content;
+  padding: 15px 15px 35px 15px;
+  margin: 15px;
+  width: 30vw;
+  left: 20%;
+  box-shadow: 0 0 10px;
+  font-family: 'Montserrat', sans-serif;
+  display: none;
+  text-align: center;
+}
