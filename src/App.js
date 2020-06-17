@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import '../src/App.css';
 import NavBar from '../src/components/navBar';
 import Container from '../src/components/container';
-import '../src/App.css';
+import Suggestions from '../src/components/suggestions';
 
 class App extends Component {
   state = {
     cities: [],
     results: [],
+    suggestions: [],
+    query: '',
+    searchWord: '',
   };
   componentDidMount = () => {
     const dataUrl =
@@ -20,29 +24,65 @@ class App extends Component {
       });
   };
   handleSearch = (query) => {
+    this.setState({
+      query,
+      results: [],
+      suggestions: [],
+    });
+    const results = [];
+    this.searchIt(query, results);
+    this.setState({ results: results });
+    return results;
+  };
+  handleType = (query) => {
+    const suggestions = [];
+    this.searchIt(query, suggestions);
+    this.setState({
+      query,
+      results: [],
+      suggestions: suggestions.slice(0, 10),
+      searchWord: undefined,
+    });
+  };
+  handleClickSuggestion = (query) => {
+    this.setState({
+      searchWord: query,
+    });
+    this.handleSearch(query);
+  };
+  searchIt(query, results) {
     const { cities } = this.state;
     const filter = query
       .toUpperCase()
       .replace(/\s+/g, ' ') //REMOVING EXTRA SPACES
       .trim();
-    const results = [];
 
     cities.map((c) => {
       const city = c.city.toUpperCase();
       const state = c.state.toUpperCase();
-      if (city.indexOf(filter) > -1 || state.indexOf(filter) > -1) {
-        results.push(c);
+      if (query !== '') {
+        if (city.indexOf(filter) > -1 || state.indexOf(filter) > -1) {
+          results.push(c);
+        }
       }
       return null;
     });
-
-    this.setState({ results: results });
-  };
+  }
 
   render() {
     return (
       <>
-        <NavBar onSearch={this.handleSearch} />
+        <NavBar
+          onSearch={this.handleSearch}
+          onType={this.handleType}
+          query={this.state.query}
+          searchWord={this.state.searchWord}
+        />
+        <Suggestions
+          cities={this.state.suggestions}
+          query={this.state.query}
+          onClickSuggestion={this.handleClickSuggestion}
+        />
         <Container cities={this.state.results} />
       </>
     );
