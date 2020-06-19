@@ -67,8 +67,14 @@ input {
 input:focus {
   outline: none;
 }
+.plus {
+  color: green;
+}
+.minus {
+  color: red;
+}
 .suggestion:hover {
-  /*     background-color: rgb(201, 186, 229); */
+  background-color: rgb(201, 186, 229);
   background-image: linear-gradient(to right, white, rgb(201, 186, 229), white);
 }
 input::placeholder {
@@ -156,6 +162,6 @@ button[disabled] {
   left: 20%;
   box-shadow: 0 0 10px;
   font-family: 'Montserrat', sans-serif;
-  display: none;
+  /* display: none; */
   text-align: center;
 }

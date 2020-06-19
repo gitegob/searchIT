@@ -1,21 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class SearchBox extends Component {
-  state = {};
-  render() {
-    return (
-      <input
-        className="search-query"
-        type="text"
-        placeholder="City or State"
-        size="100"
-        value={this.props.searchWord === '' ? '' : this.props.searchWord}
-        onChange={(e) => {
-          this.props.onType(e.target.value);
-        }}
-      />
-    );
-  }
-}
-
-export default SearchBox;
+export const SearchBox = (props) => {
+  return (
+    <input
+      className="search-query"
+      type="text"
+      placeholder="City or State"
+      size="100"
+      value={props.query}
+      onChange={(e) => {
+        props.onType(e.target.value);
+      }}
+    />
+  );
+};

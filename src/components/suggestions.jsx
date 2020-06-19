@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Suggestions extends Component {
-  render() {
-    return (
-      <div className="suggestion-box">
-        {this.props.cities.map((c, i) => (
-          <div
-            className="suggestion"
-            id={i}
-            key={i}
-            onClick={(e) => this.props.onClickSuggestion(e.target.innerText)}
-          >
-            {c.city}
-          </div>
-        ))}
-      </div>
-    );
-  }
-}
-
-export default Suggestions;
+export const Suggestions = (props) => {
+  return (
+    <div className="suggestion-box">
+      {props.cities.map((c, i) => (
+        <div
+          className="suggestion"
+          id={i}
+          key={i}
+          onClick={(e) => props.onClickSuggestion(e.target.innerText)}
+        >
+          {c.city}
+        </div>
+      ))}
+    </div>
+  );
+};
