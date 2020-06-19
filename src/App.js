@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../src/App.css';
-import NavBar from '../src/components/navBar';
-import Container from '../src/components/container';
-import Suggestions from '../src/components/suggestions';
+import { NavBar } from '../src/components/navBar';
+import { Container } from '../src/components/container';
+import { Suggestions } from '../src/components/suggestions';
 
 class App extends Component {
   state = {
@@ -10,7 +10,6 @@ class App extends Component {
     results: [],
     suggestions: [],
     query: '',
-    searchWord: '',
   };
   componentDidMount = () => {
     const dataUrl =
@@ -25,7 +24,10 @@ class App extends Component {
   };
   handleSearch = (query) => {
     this.setState({
-      query,
+      query: query
+        .toUpperCase()
+        .replace(/\s+/g, ' ') //REMOVING EXTRA SPACES
+        .trim(),
       results: [],
       suggestions: [],
     });
@@ -38,15 +40,17 @@ class App extends Component {
     const suggestions = [];
     this.searchIt(query, suggestions);
     this.setState({
-      query,
+      query: query
+        .toUpperCase()
+        .replace(/\s+/g, ' ') //REMOVING EXTRA SPACES
+        .trim(),
       results: [],
       suggestions: suggestions.slice(0, 10),
-      searchWord: undefined,
     });
   };
   handleClickSuggestion = (query) => {
     this.setState({
-      searchWord: query,
+      query: query,
     });
     this.handleSearch(query);
   };
@@ -67,6 +71,7 @@ class App extends Component {
       }
       return null;
     });
+    if (results.length === 0) results.push('Empty');
   }
 
   render() {
@@ -82,8 +87,17 @@ class App extends Component {
           cities={this.state.suggestions}
           query={this.state.query}
           onClickSuggestion={this.handleClickSuggestion}
+          style={{
+            display: this.state.suggestions.length === 0 ? 'none' : 'block',
+          }}
         />
-        <Container cities={this.state.results} />
+        {this.state.results[0] === 'Empty' ? (
+          <div className="remark">
+            Sorry! We can't seem to find that City/State.
+          </div>
+        ) : (
+          <Container cities={this.state.results} />
+        )}
       </>
     );
   }
