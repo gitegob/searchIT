@@ -5,7 +5,8 @@
 }
 
 body {
-  background-image: url('https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  /* background-image: url('https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
+  background-image: url('laptop_bg.webp');
   background-color: #2c2537;
   background-size: cover;
   background-attachment: fixed;
@@ -54,15 +55,18 @@ input {
   padding: 10px;
   height: 40px;
   z-index: 1;
+  border-radius: 5px;
+  color: #333;
 }
 
 .suggestion-box {
-  background-color: white;
+  background-color: #999999;
   position: relative;
   left: 17.5%;
   height: fit-content;
   margin-top: -1.5%;
   cursor: default;
+  list-style-type: none;
 }
 input:focus {
   outline: none;
@@ -96,6 +100,9 @@ input::placeholder {
   box-shadow: 0 0 2px;
   background-color: #2c2537;
   border: none;
+}
+form {
+  display: inline;
 }
 
 button:disabled,
@@ -162,6 +169,5 @@ button[disabled] {
   left: 20%;
   box-shadow: 0 0 10px;
   font-family: 'Montserrat', sans-serif;
-  /* display: none; */
   text-align: center;
 }
